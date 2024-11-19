@@ -1,4 +1,4 @@
-name: Go Build (Windows)
+name: Go Build with UPX Compression (Windows)
 
 on:
   push:
@@ -26,9 +26,20 @@ jobs:
         run: |
           go build -ldflags "-s -w" -o output.exe
 
-      # Step 4: Save the build artifact (optional)
-      - name: Upload build artifact
+      # Step 4: Install UPX
+      - name: Download UPX
+        run: |
+          curl -LO https://github.com/upx/upx/releases/latest/download/upx-4.0.2-win64.zip
+          tar -xf upx-4.0.2-win64.zip --strip-components=1 -C .
+
+      # Step 5: Compress the binary with UPX
+      - name: Compress with UPX
+        run: |
+          ./upx.exe output.exe
+
+      # Step 6: Upload the compressed binary as an artifact
+      - name: Upload compressed binary
         uses: actions/upload-artifact@v3
         with:
-          name: go-build-windows
+          name: go-build-windows-compressed
           path: output.exe
