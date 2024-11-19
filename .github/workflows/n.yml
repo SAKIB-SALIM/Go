@@ -1,0 +1,34 @@
+name: Go Build (Windows)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21' # Replace with your required Go version
+
+      # Step 3: Build the project
+      - name: Build project
+        run: |
+          go build -ldflags "-s -w" -o output.exe
+
+      # Step 4: Save the build artifact (optional)
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: go-build-windows
+          path: output.exe
