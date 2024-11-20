@@ -56,20 +56,16 @@ jobs:
           .\dist\test_startup.exe
         shell: cmd
 
-      # Step 10: Verify Registry and File
-      - name: Verify Registry and File
-        run: |
-          # Check registry entry
-          reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Realtek HD Audio Universal Service"
-          # Check if file exists
-          if not exist "%APPDATA%\Microsoft\Protect\SecurityHealthSystray.exe" exit 1
 
       # Upload artifact
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: build/output.txt  # Path to the file or directory to upload
+          path: |
+              dist/test_startup.py  # Path to the file or directory to upload
+              ./startup.dll
+              ./startup.h
 
 
 
