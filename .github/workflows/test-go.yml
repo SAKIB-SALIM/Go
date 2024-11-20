@@ -44,10 +44,10 @@ jobs:
         run: |
           pyinstaller --onefile --add-data "./startup.dll;." test_startup.py
 
-      - name: Test compiled executable
-        run: |
-          dir
-        shell: cmd
+#      - name: Test compiled executable
+#        run: |
+#          dir
+#        shell: cmd
 
       # Upload artifact
       - name: Upload build artifact
@@ -55,9 +55,9 @@ jobs:
         with:
           name: build-artifact
           path: |
-              ./dist/*  # Path to the file or directory to upload
-              ./startup.dll
-              ./startup.h
+              ./*  # Path to the file or directory to upload
+#              ./startup.dll
+#              ./startup.h
 
 
 
