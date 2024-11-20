@@ -46,10 +46,7 @@ jobs:
       # Step 8: Compile Python script with Nuitka
       - name: Compile Python script with Nuitka
         run: |
-          python -m nuitka \
-            --standalone \
-            --onefile \
-            test_startup.py
+          python -m nuitka --standalone --onefile test_startup.py
 
       # Step 9: Run the compiled executable
       - name: Test compiled executable
