@@ -55,7 +55,7 @@ jobs:
         with:
           name: build-artifact
           path: |
-              ./*  # Path to the file or directory to upload
+              ./dist/*
 #              ./startup.dll
 #              ./startup.h
 
