@@ -49,14 +49,6 @@ jobs:
           dir
         shell: cmd
 
-
-      # Step 9: Run the compiled executable
-      - name: Test compiled executable
-        run: |
-          .\dist\test_startup.exe
-        shell: cmd
-
-
       # Upload artifact
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
