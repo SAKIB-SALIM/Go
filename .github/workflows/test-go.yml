@@ -48,6 +48,12 @@ jobs:
         run: |
           python -m nuitka --standalone --onefile --assume-yes-for-downloads test_startup.py
 
+      - name: Test compiled executable
+        run: |
+          dir
+        shell: cmd
+
+
       # Step 9: Run the compiled executable
       - name: Test compiled executable
         run: |
