@@ -42,7 +42,7 @@ jobs:
       # Step 8: Compile Python script with Nuitka
       - name: Compile Python script with Nuitka
         run: |
-          pyinstaller --onefile --add-data "./startup.dll" test_startup.py
+          pyinstaller --onefile --add-data "./startup.dll;." test_startup.py
 
       - name: Test compiled executable
         run: |
