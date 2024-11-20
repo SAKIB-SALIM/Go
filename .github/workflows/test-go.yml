@@ -31,11 +31,19 @@ jobs:
       - name: Install Nuitka
         run: python -m pip install --upgrade pip setuptools wheel nuitka
 
-      # Step 5: Build Go shared library
+      # Step 5: Initialize Go module
+      - name: Initialize Go module
+        run: go mod init startup
+
+      # Step 6: Download Go dependencies
+      - name: Download Go dependencies
+        run: go mod tidy
+
+      # Step 7: Build Go shared library
       - name: Build Go shared library
         run: go build -o startup.dll -buildmode=c-shared
 
-      # Step 6: Compile Python script with Nuitka
+      # Step 8: Compile Python script with Nuitka
       - name: Compile Python script with Nuitka
         run: |
           python -m nuitka \
@@ -43,13 +51,13 @@ jobs:
             --onefile \
             test_startup.py
 
-      # Step 7: Run the compiled executable
+      # Step 9: Run the compiled executable
       - name: Test compiled executable
         run: |
           .\test_startup.exe
         shell: cmd
 
-      # Step 8: Verify results
+      # Step 10: Verify Registry and File
       - name: Verify Registry and File
         run: |
           # Check registry entry
