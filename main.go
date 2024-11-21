@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/SAKIB-SALIM/skuld/mods/system"
+	"github.com/SAKIB-SALIM/skuld/modules/system"
 )
 
 func main() {
