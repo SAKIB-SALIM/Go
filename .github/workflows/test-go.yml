@@ -28,8 +28,8 @@ jobs:
           python-version: 3.11
 
       # Step 4: Install Nuitka
-      - name: Install Nuitka
-        run: python -m pip install --upgrade pip pyinstaller
+#      - name: Install Nuitka
+#        run: python -m pip install --upgrade pip pyinstaller
 
       # Step 6: Download Go dependencies
       - name: Download Go dependencies
@@ -37,17 +37,17 @@ jobs:
 
       # Step 7: Build Go shared library
       - name: Build Go shared library
-        run: go build -o startup.dll -buildmode=c-shared
-
+#        run: go build -o startup.dll -buildmode=c-shared
+        run: go build -o output.exe
       # Step 8: Compile Python script with Nuitka
-      - name: Compile Python script with Nuitka
-        run: |
-          pyinstaller --onefile --add-data "./startup.dll;." test_startup.py
-
-#      - name: Test compiled executable
+#      - name: Compile Python script with Nuitka
 #        run: |
-#          dir
-#        shell: cmd
+#          pyinstaller --onefile --add-data "./startup.dll;." test_startup.py
+
+      - name: Test compiled executable
+        run: |
+          .\output.exe
+        shell: cmd
 
       # Upload artifact
       - name: Upload build artifact
@@ -55,7 +55,7 @@ jobs:
         with:
           name: build-artifact
           path: |
-              ./dist/*
+              ./output.exe
 #              ./startup.dll
 #              ./startup.h
 
