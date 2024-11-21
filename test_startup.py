@@ -12,7 +12,7 @@ def main():
 
     # Call the `Run` function from the DLL
     try:
-        result = lib.Run()
+        result = lib.main()
     except AttributeError as e:
         print(f"Error calling 'Run' function: {e}")
         return
