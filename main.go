@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hackirby/skuld/modules/system" // Change `yourpackage` to your actual package name.
+	"mods/system" // Change `yourpackage` to your actual package name.
 )
 
 func main() {
