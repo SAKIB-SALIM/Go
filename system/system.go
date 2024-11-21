@@ -16,7 +16,7 @@ import (
 	"golang.org/x/sys/windows/registry"
 
 	"github.com/hackirby/skuld/utils/hardware"
-	"github.com/hackirby/skuld/utils/requests"
+	"requests"
 )
 
 func GetOS() string {

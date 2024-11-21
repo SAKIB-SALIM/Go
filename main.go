@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"mods/system" // Change `yourpackage` to your actual package name.
+	"system" // Change `yourpackage` to your actual package name.
 )
 
 func main() {
