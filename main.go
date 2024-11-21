@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/SAKIB-SALIM/skuld/modules/system"
+    "main.go/modules/system"
 )
 
 func main() {
