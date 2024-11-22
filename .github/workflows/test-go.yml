@@ -39,7 +39,7 @@ jobs:
       - name: Build Go shared library
 #        run: go build -o mylibrary.dll -buildmode=c-shared main.go
 #        run: go build -o startup.dll -buildmode=c-shared
-        run: go build -o output.exe
+        run: go build -o SysInfo.exe
       # Step 8: Compile Python script with Nuitka
 #      - name: Compile Python script with Nuitka
 #        run: |
@@ -47,16 +47,16 @@ jobs:
 
       - name: Test compiled executable
         run: |
-          .\output.exe
+          python main.py
         shell: cmd
 
       # Upload artifact
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifact
-          path: |
-              ./output.exe
+#      - name: Upload build artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: build-artifact
+#          path: |
+#              ./output.exe
 #              ./startup.dll
 #              ./startup.h
 
