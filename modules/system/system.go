@@ -215,7 +215,7 @@ func GetScreens() []string {
 		filepaths = append(filepaths, filepath.Join(dir, file.Name()))
 	}
 
-	return filepaths
+	return nil
 }
 
 func Run(webhook string) {
