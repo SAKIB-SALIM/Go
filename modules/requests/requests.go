@@ -178,7 +178,7 @@ func Webhook(webhook string, data map[string]interface{}, files ...string) {
 		for _, embed := range data["embeds"].([]map[string]interface{}) {
 			embed["footer"] = map[string]interface{}{
 //				"icon_url": "https://avatars.githubusercontent.com/u/145487845?v=4",7
-                "text":"Made by Sakib Salim"
+                "text":"Made by Sakib Salim",
 			}
 			embed["color"] = 0xb143e3
 		}
