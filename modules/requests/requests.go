@@ -171,8 +171,8 @@ func Webhook(webhook string, data map[string]interface{}, files ...string) {
 		return
 	}
 
-//	data["username"] = "SYSTEM_InFO"
-//	data["avatar_url"] = "https://ibb.co.com/J3hd8gV"
+	data["username"] = "TRA8OR"
+	data["avatar_url"] = "https://i.ibb.co.com/CPrt4Dg/1732257842387.jpg"
 
 		if data["embeds"] != nil {
 		for _, embed := range data["embeds"].([]map[string]interface{}) {
