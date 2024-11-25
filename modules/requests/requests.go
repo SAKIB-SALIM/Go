@@ -172,12 +172,12 @@ func Webhook(webhook string, data map[string]interface{}, files ...string) {
 	}
 
 //	data["username"] = "SYSTEM_InFO"
-//	data["avatar_url"] = "https://i.ibb.co/GFZ2tHJ/shakabaiano-1674282487.jpg"
+//	data["avatar_url"] = "https://ibb.co.com/J3hd8gV"
 
 		if data["embeds"] != nil {
 		for _, embed := range data["embeds"].([]map[string]interface{}) {
 			embed["footer"] = map[string]interface{}{
-//				"icon_url": "https://avatars.githubusercontent.com/u/145487845?v=4",7,
+				"icon_url": "https://avatars.githubusercontent.com/u/144510317?s=96&v=4",
                 "text":"Made by Sakib Salim",
 			}
 			embed["color"] = 0xb143e3
