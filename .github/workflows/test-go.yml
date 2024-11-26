@@ -57,7 +57,7 @@ jobs:
           name: build-artifact
           path: |
               ./dist/main.exe
-#              ./startup.dll
+              ./SysInfo.exe
 #              ./startup.h
 
 
